@@ -15,9 +15,8 @@ instance Exception OpaqueError
 
 readDb :: FilePath -> IO String
 readDb db = do
-    d <- readFile db `causes` OpaqueError "Couldn't open the database"
-    (12,value) <- return (read d) `causes` OpaqueError "The database is corrupt"
-    return value
+    readFile db `causes` OpaqueError "Couldn't open the database"
+    undefined `causes` OpaqueError "Database not implemented yet"
 
 example :: IO ()
 example = do
